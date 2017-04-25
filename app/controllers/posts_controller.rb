@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   has_scope :category_ids, type: :array
   has_scope :tag_ids, type: :array
 
-  include Crud
+  include CruddyController
 
   class << self
     def filters
@@ -15,14 +15,12 @@ class PostsController < ApplicationController
         tag_ids: {
           type: :select,
           label: 'Tags',
-          collection: Tag.pluck(:id, :name),
-          multiple: true
+          collection: Tag.pluck(:name, :id)
         },
         category_ids: {
           type: :select,
           label: 'Categories',
-          collection: Category.pluck(:id, :name),
-          multiple: true
+          collection: Category.pluck(:name, :id)
         }
       }
     end

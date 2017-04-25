@@ -5,4 +5,11 @@ class Post < ApplicationRecord
   validates :category, presence: true
   validates :title, presence: true
   validates :title, uniqueness: true
+
+  alias_attribute :name, :title
+
+  # has_scope scopes
+  scope :title, (lambda do |title|
+    where('LOWER(title) LIKE ?', "%#{title.downcase}%")
+  end)
 end

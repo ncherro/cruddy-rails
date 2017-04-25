@@ -1,9 +1,9 @@
 - tags = post.tags.map { |tag| link_to(tag.name, tag) }
 tr
   td = post.id
+  td = post.title
   td = link_to post.category.name, post.category
   td = tags.join(', ').html_safe
-  td = post.title
   td = post.text
   td = l post.created_at
   td = l post.updated_at

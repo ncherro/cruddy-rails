@@ -1,13 +1,18 @@
-# CRUD ops for controllers
-module Crud
+# DRY up CRUD ops for controllers
+module CruddyController
   extend ActiveSupport::Concern
 
+  # expose current_set and current_object as helper methods
   included do
     helper_method :current_set
     helper_method :current_object
   end
 
   def index; end
+
+  def show; end
+
+  def edit; end
 
   def new
     @current_object = klass.new
@@ -25,10 +30,6 @@ module Crud
       render :new, alert: 'There was an error'
     end
   end
-
-  def show; end
-
-  def edit; end
 
   def update
     if current_object.update(safe_params)
@@ -56,27 +57,32 @@ module Crud
 
   private
 
+  # default redirect_to path after save / destroy
   def index_path
     { action: :index }
   end
 
+  # notice on successful save
   def notice(message)
-    %(#{message} <a class="btn btn-xs btn-default" href="#{url_for(action: :edit, id: current_object)}"><i class="fa fa-pencil"></i> Edit again</a>)
+    %(#{message} <a class="btn btn-xs btn-default" ) +
+      %(href="#{url_for(action: :edit, id: current_object)}">) +
+      %(<i class="fa fa-pencil"></i> Edit again</a>).html_safe
   end
 
+  # return memoized @current_set - a paginated, scoped set of records
   def current_set
-    @current_set ||= (
-      query = apply_scopes(klass)
-      query = query.ordered
-      extend_current_set(query.page(params[:page]))
-    )
+    return @current_set if defined? @current_set
+    query = apply_scopes(klass)
+    query = query.ordered
+    @current_set = extend_current_set(query.page(params[:page]))
   end
 
+  # allow controller to override the current_set query
   def extend_current_set(query)
-    # override to chain stuff to the query
     query
   end
 
+  # return memoized @current_object
   def current_object
     @current_object ||= klass.find(params[:id])
   end

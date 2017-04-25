@@ -1,0 +1,9 @@
+.col-sm-12
+  .form-group.clearfix
+    hr
+    .col-sm-9
+      button.btn.btn-primary type="submit"
+        = %(#{fa_icon('save')} Save).html_safe
+      '
+      = link_to %(#{fa_icon('remove')} #{t('.cancel', default: t("helpers.links.cancel"))}).html_safe,
+        url_for(action: :index), class: 'btn btn-default'
