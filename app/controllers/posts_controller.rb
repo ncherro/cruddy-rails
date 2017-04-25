@@ -1,23 +1,23 @@
 class PostsController < ApplicationController
-  has_scope :title
-  has_scope :category_ids, type: :array
-  has_scope :tag_ids, type: :array
+  has_scope :by_title
+  has_scope :by_tag_ids, type: :array
+  has_scope :by_category_ids, type: :array
 
   include CruddyController
 
   class << self
     def filters
       {
-        title: {
+        by_title: {
           type: :string,
           label: 'Title'
         },
-        tag_ids: {
+        by_tag_ids: {
           type: :select,
           label: 'Tags',
           collection: Tag.pluck(:name, :id)
         },
-        category_ids: {
+        by_category_ids: {
           type: :select,
           label: 'Categories',
           collection: Category.pluck(:name, :id)

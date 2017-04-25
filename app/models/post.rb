@@ -9,7 +9,7 @@ class Post < ApplicationRecord
   alias_attribute :name, :title
 
   # has_scope scopes
-  scope :title, (lambda do |title|
+  scope :by_title, (lambda do |title|
     where('LOWER(title) LIKE ?', "%#{title.downcase}%")
   end)
 end

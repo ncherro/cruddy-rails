@@ -33,14 +33,12 @@ module CruddyController
 
   def update
     if current_object.update(safe_params)
-      format.html do
-        redirect_to(
-          index_path,
-          notice: notice("Successfully updated#{name}!")
-        )
-      end
+      redirect_to(
+        index_path,
+        notice: notice("Successfully updated #{current_object.name}!")
+      )
     else
-      format.html { render :edit, alert: 'There was an error' }
+      render :edit, alert: 'There was an error'
     end
   end
 
@@ -48,7 +46,7 @@ module CruddyController
     if current_object.destroy
       redirect_to(
         index_path,
-        notice: "Successfully deleted#{current_object.name}!"
+        notice: "Successfully deleted #{current_object.name}!"
       )
     else
       redirect_to :back, alert: current_object.errors.full_messages.join(', ')
@@ -66,7 +64,7 @@ module CruddyController
   def notice(message)
     %(#{message} <a class="btn btn-xs btn-default" ) +
       %(href="#{url_for(action: :edit, id: current_object)}">) +
-      %(<i class="fa fa-pencil"></i> Edit again</a>).html_safe
+      %(<i class="fa fa-pencil"></i> Edit again</a>)
   end
 
   # return memoized @current_set - a paginated, scoped set of records
