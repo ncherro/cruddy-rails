@@ -38,7 +38,7 @@
           = f.input attr, collection: opts[:collection], selected: selected,
             input_html: { name: input_param_name, multiple: multiple,
             data: { placeholder: label, allow_clear: true } },
-            required: false, include_blank: blank_opt
+            required: false, include_blank: all
         '
       - when :datetime
         = f.input attr, input_html: { name: param_name, class: 'datetimepicker',
