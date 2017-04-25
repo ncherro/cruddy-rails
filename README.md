@@ -6,8 +6,7 @@ using
 - bootstrap
 - simple\_form
 - kaminari
-- has\_scope
-- slim-rails
+- has\_scope slim-rails
 
 ## Setup (with docker)
 
@@ -25,3 +24,4 @@ These commands were run to scaffold some views
 
 - `docker-compose run app bundle exec rails g bootstrap:layout`
 - `docker-compose run app bundle exec rails g simple_form:install --bootstrap`
+- `docker-compose run app bundle exec rails generate kaminari:views bootstrap3`
