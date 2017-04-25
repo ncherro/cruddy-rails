@@ -1,6 +1,4 @@
 class PostsController < ApplicationController
-  helper_method :klass
-
   has_scope :title
   has_scope :category_ids, type: :array
   has_scope :tag_ids, type: :array
@@ -44,4 +42,5 @@ class PostsController < ApplicationController
   def klass
     Post
   end
+  helper_method :klass
 end

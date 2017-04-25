@@ -1,7 +1,7 @@
 - wrapper = controller.class.try(:form_wrapper) || :horizontal_form
 - css_class = controller.class.try(:form_class) || 'form-horizontal col-sm-10 col-sm-offset-1'
 .row
-  = simple_nested_form_for [:admin, current_object], wrapper: wrapper,
+  = simple_form_for current_object, wrapper: wrapper,
     html: { class: css_class } do |f|
     = form_errors(f.object)
     = render 'fields', f: f

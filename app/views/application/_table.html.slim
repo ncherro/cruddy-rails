@@ -1,4 +1,4 @@
-= render 'pagination'
+= render 'pagination', current_set: current_set
 
 table class="table table-striped table-with-actions"
   thead
@@ -6,4 +6,4 @@ table class="table table-striped table-with-actions"
   tbody
     = render current_set
 
-= render 'pagination'
+= render 'pagination', current_set: current_set

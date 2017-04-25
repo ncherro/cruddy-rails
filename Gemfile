@@ -22,6 +22,7 @@ gem 'simple_form'
 gem 'has_scope'
 gem 'twitter-bootstrap-rails'
 gem 'slim-rails'
+gem 'font-awesome-rails'
 
 group :development, :test do
   gem 'byebug', platform: :mri

@@ -65,11 +65,11 @@ module Crud
   end
 
   def current_set
-    @current_set ||= begin
-                       query = apply_scopes(klass)
-                       query = query.ordered
-                       extend_current_set(query.page(params[:page]))
-                     end
+    @current_set ||= (
+      query = apply_scopes(klass)
+      query = query.ordered
+      extend_current_set(query.page(params[:page]))
+    )
   end
 
   def extend_current_set(query)
