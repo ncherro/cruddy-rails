@@ -3,10 +3,20 @@
 This is a Rails 5 example app to show off quick and dirty CRUD functionality
 using
 
-- bootstrap
-- simple\_form
+Uses the following gems for quick CRUD:
+
 - kaminari
-- has\_scope slim-rails
+- simple\_form
+- has\_scope
+- twitter-bootstrap-rails
+- slim-rails
+- font-awesome-rails
+
+Uses these gems for easy development:
+
+- rubocop
+- better\_errors
+- binding\_of\_caller
 
 ## Setup (with docker)
 
