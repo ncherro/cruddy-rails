@@ -41,4 +41,8 @@ class PostsController < ApplicationController
     Post
   end
   helper_method :klass
+
+  def extend_current_set(query)
+    query.includes(:category, :tags)
+  end
 end
