@@ -1,0 +1,65 @@
+- if controller.class.respond_to?(:filters) && (filters = controller.class.filters)
+
+  = simple_form_for klass.name.to_sym, method: :get, url: '',
+    wrapper: :inline_form, html: { class: 'form-inline filter-form' } do |f|
+
+    - filters.each do |attr, opts|
+      - param_name = opts[:param_name] || attr
+      - label = opts[:label] || attr.to_s.titleize
+      - case opts[:type]
+      - when :string
+        = f.input attr, input_html: { name: param_name,
+          value: params[param_name] }, required: false, placeholder: label
+        '
+      - when :select
+        - all = "- All #{label.to_s.pluralize} -"
+        - multiple = opts[:multiple].present?
+        - if multiple
+          - blank_opt = false
+        - else
+          - blank_opt = params[param_name].blank? ? '' : all
+        - selected = params[param_name]
+        - input_param_name = param_name
+        - input_param_name = "#{input_param_name}[]" if multiple
+        - if opts[:remote_url].present?
+          - if opts[:klass] && params[param_name].present?
+            - val = params[param_name]
+            - val.reject!(&:blank?) if val.is_a? (Array)
+            - collection = multiple.present? ? opts[:klass].where(id: val) : opts[:klass].find_by(id: val)
+          - else
+            - collection = []
+
+          = f.input attr, as: :remote_select, url: opts[:remote_url],
+            multiple: multiple,
+            collection: collection, input_html: { name: input_param_name,
+            data: { allow_clear: true, placeholder: label } },
+            include_blank: label, selected: selected
+        - else
+          = f.input attr, collection: opts[:collection], selected: selected,
+            input_html: { name: input_param_name, multiple: multiple,
+            data: { placeholder: label, allow_clear: true } },
+            required: false, include_blank: blank_opt
+        '
+      - when :datetime
+        = f.input attr, input_html: { name: param_name, class: 'datetimepicker',
+          value: params[param_name] }, required: false, placeholder: label
+        '
+      - when :range
+        - last_key = opts[:options].keys.last
+        - opts[:options].each do |k,v|
+          - value = params[attr].present? ? params[attr][k] : nil
+          = f.input k, input_html: { name: attr.to_s + "[#{k.to_s}]",
+            value: value, class: 'datetimepicker' }, required: false,
+            placeholder: v
+          - if k == last_key
+            '
+          - else
+            ' &nbsp;&mdash;
+      - when :boolean
+        = f.input attr, as: :boolean, required: false, label: "#{label}?",
+          wrapper: :vertical_boolean, input_html: { name: param_name,
+          checked: (params[param_name] == '1') }
+        '
+
+    = render 'filter_actions'
+  hr

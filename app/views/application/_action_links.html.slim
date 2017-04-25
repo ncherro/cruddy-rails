@@ -1,0 +1,27 @@
+- only ||= [:show, :edit, :destroy]
+- extra_class ||= ' btn-xs'
+- can_delete = !!Rails.application.routes.recognize_path("#{params[:controller]}/:id", method: :delete) rescue false
+
+- if only.include?(:back)
+  = link_to t('.back', :default => t("helpers.links.back")),
+    url_for(action: :index),
+    class: "btn btn-default#{extra_class}"
+  '
+
+- if only.include?(:show)
+  = link_to %(#{fa_icon('eye')} #{t('.show', :default => t("helpers.links.show"))}).html_safe,
+    url_for(action: :show, id: obj),
+    class: "btn btn-default#{extra_class}"
+  '
+
+- if only.include?(:edit)
+  = link_to %(#{fa_icon('pencil')} #{t('.edit', :default => t("helpers.links.edit"))}).html_safe,
+    url_for(action: :edit, id: obj),
+    class: "btn btn-default btn-warning#{extra_class}"
+  '
+
+- if only.include?(:destroy) && can_delete
+  = link_to %(#{fa_icon('trash-o')} #{t('.destroy', :default => t('helpers.links.destroy'))}).html_safe,
+    url_for(action: :destroy, id: obj), :method => :delete,
+    data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) },
+    class: "btn btn-danger#{extra_class}"

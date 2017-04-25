@@ -1,0 +1,11 @@
+div class="page-header"
+
+  .actions.pull-right
+    - if controller.respond_to?(:csv_cols)
+      = link_to %(#{fa_icon('download')} Download CSV - #{number_with_delimiter(current_set.total_count)} rows).html_safe,
+        url_for(params.merge(format: :csv)), class: 'btn btn-primary'
+      '
+    = link_to %(#{fa_icon('plus')} #{t('.new', default: ['New %{model}'], model: klass.model_name.human.titleize)}).html_safe,
+      url_for(action: :new), :class => 'btn btn-primary'
+
+  h1 = t '.title', default: klass.model_name.human.pluralize.titleize

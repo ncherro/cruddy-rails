@@ -1,0 +1,6 @@
+.form-group
+  button.btn.btn-nav type="Filter"
+    = %(#{fa_icon('filter')} Filter).html_safe
+  '
+  = link_to %(#{fa_icon('remove')} #{t('.clear_filters', default: t("helpers.links.clear_filters"))}).html_safe,
+    request.fullpath.split('?').first, class: 'btn btn-default'

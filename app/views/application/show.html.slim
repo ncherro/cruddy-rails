@@ -1,0 +1,9 @@
+div class="page-header"
+
+  .actions.pull-right
+    = render "action_links", obj: current_object,
+      only: [:back, :edit, :destroy], extra_class: ''
+
+  h1 = klass.model_name.human.titleize
+
+= render 'show'
