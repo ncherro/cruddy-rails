@@ -12,4 +12,6 @@ class Post < ApplicationRecord
   scope :by_title, (lambda do |title|
     where('LOWER(title) LIKE ?', "%#{title.downcase}%")
   end)
+  scope :by_tag_id, (->(id) { joins(:tags).where(tags: { id: id }) })
+  scope :by_category_id, (->(id) { where(category_id: id) })
 end

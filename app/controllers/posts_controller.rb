@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   has_scope :by_title
-  has_scope :by_tag_ids, type: :array
-  has_scope :by_category_ids, type: :array
+  has_scope :by_tag_id
+  has_scope :by_category_id
 
   include CruddyController
 
@@ -12,12 +12,12 @@ class PostsController < ApplicationController
           type: :string,
           label: 'Title'
         },
-        by_tag_ids: {
+        by_tag_id: {
           type: :select,
           label: 'Tags',
           collection: Tag.pluck(:name, :id)
         },
-        by_category_ids: {
+        by_category_id: {
           type: :select,
           label: 'Categories',
           collection: Category.pluck(:name, :id)
