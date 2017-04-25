@@ -22,6 +22,7 @@ Uses these gems for easy development:
 
 - `docker-compose build`
 - `docker-compose run app bundle`
+- `docker-compose run app bundle exec rails db:create`
 - `docker-compose run app bundle exec rails db:reset`
 - `docker-compose up`
 
