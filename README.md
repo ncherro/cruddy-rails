@@ -29,9 +29,9 @@ Uses these gems for easy development:
 Then visit http://dockerhost:3000, where `dockerhost` points to your
 `docker-machine ip`
 
-## Scaffolded files
+### Scaffolded files
 
-These commands were run to scaffold some views
+These commands were run to scaffold some views (no need to re-run, just FYI)
 
 - `docker-compose run app bundle exec rails g bootstrap:layout`
 - `docker-compose run app bundle exec rails g simple_form:install --bootstrap`
