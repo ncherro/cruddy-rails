@@ -34,5 +34,6 @@ Then visit http://dockerhost:3000/posts, where `dockerhost` points to your
 These commands were run to scaffold some views (no need to re-run, just FYI)
 
 - `docker-compose run app bundle exec rails g bootstrap:layout`
+- `docker-compose run app bundle exec rails g bootstrap:install static`
 - `docker-compose run app bundle exec rails g simple_form:install --bootstrap`
 - `docker-compose run app bundle exec rails generate kaminari:views bootstrap3`

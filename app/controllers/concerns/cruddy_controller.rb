@@ -1,5 +1,5 @@
 # DRY up CRUD ops for controllers
-module CruddyController
+module CruddyControllerMixin
   extend ActiveSupport::Concern
 
   # expose current_set and current_object as helper methods

@@ -1,7 +1,7 @@
 class CategoriesController < ApplicationController
   has_scope :by_name
 
-  include CruddyController
+  include CruddyControllerMixin
 
   class << self
     def filters

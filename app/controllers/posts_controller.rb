@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   has_scope :by_tag_id
   has_scope :by_category_id
 
-  include CruddyController
+  include CruddyControllerMixin
 
   class << self
     def filters
