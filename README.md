@@ -26,7 +26,7 @@ Uses these gems for easy development:
 - `docker-compose run app bundle exec rails db:reset`
 - `docker-compose up`
 
-Then visit http://dockerhost:3000, where `dockerhost` points to your
+Then visit http://dockerhost:3000/posts, where `dockerhost` points to your
 `docker-machine ip`
 
 ### Scaffolded files
