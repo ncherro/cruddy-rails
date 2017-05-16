@@ -35,10 +35,14 @@
             data: { allow_clear: true, placeholder: label } },
             include_blank: label, selected: selected
         - else
-          = f.input attr, collection: opts[:collection], selected: selected,
-            input_html: { name: input_param_name, multiple: multiple,
-            data: { placeholder: label, allow_clear: true } },
-            required: false, include_blank: all
+          - select_options = { collection: opts[:collection], selected: selected,
+                               input_html: { name: input_param_name, multiple: multiple,
+                               data: { placeholder: label, allow_clear: true } },
+                               required: false, include_blank: all }
+          - select_options[:as] = opts[:as] if opts[:as]
+          - select_options[:group_method] = opts[:group_method] if opts[:group_method]
+          = f.input attr, select_options
+
         '
       - when :datetime
         = f.input attr, input_html: { name: param_name, class: 'datetimepicker',

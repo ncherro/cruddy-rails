@@ -2,6 +2,6 @@
 - css_class = controller.class.try(:form_class) || ''
 = simple_form_for current_object, wrapper: wrapper,
   html: { class: css_class } do |f|
-  = form_errors(f.object)
+  /= form_errors(f.object)
   = render 'fields', f: f
   = render 'actions', f: f

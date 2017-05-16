@@ -14,6 +14,8 @@ module CruddyControllerMixin
 
   def edit; end
 
+  def confirm_delete; end
+
   def new
     @current_object = klass.new
   end
@@ -24,7 +26,7 @@ module CruddyControllerMixin
     if current_object.save
       redirect_to(
         index_path,
-        notice: notice('Successfully created!')
+        notice: notice("Successfully created #{current_object.name}!")
       )
     else
       render :new, alert: 'There was an error'
@@ -49,7 +51,8 @@ module CruddyControllerMixin
         notice: "Successfully deleted #{current_object.name}!"
       )
     else
-      redirect_to :back, alert: current_object.errors.full_messages.join(', ')
+      redirect_back fallback_location: root_path,
+                    alert: current_object.errors.full_messages.join(', ')
     end
   end
 

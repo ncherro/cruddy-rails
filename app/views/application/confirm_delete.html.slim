@@ -1,0 +1,12 @@
+div class="page-header"
+  h1 = "Are you sure you want to delete #{current_object.name}?"
+
+h3 = "#{fa_icon('warning')} Deletion is irreversible".html_safe
+
+= simple_form_for current_object, method: :delete do |f|
+  .form-group.clearfix
+    button.btn.btn-danger type="submit"
+      = %(#{fa_icon('trash')} Delete).html_safe
+    '
+    = link_to %(#{fa_icon('remove')} Cancel).html_safe,
+      url_for(action: :index), class: 'btn btn-default'
