@@ -1,22 +1,21 @@
 # Rails CRUD :pray:
 
-This is a Rails 5 example app to show off quick and dirty CRUD functionality
-using
+This is a Rails 5 example app to show off quick and dirty CRUD functionality.
 
 Uses the following gems for quick CRUD:
 
-- kaminari
-- simple\_form
-- has\_scope
-- twitter-bootstrap-rails
-- slim-rails
-- font-awesome-rails
+- [kaminari](https://github.com/kaminari/kaminari)
+- [simple\_form](https://github.com/plataformatec/simple_form)
+- [has\_scope](https://github.com/plataformatec/has_scope)
+- [twitter-bootstrap-rails](https://github.com/seyhunak/twitter-bootstrap-rails)
+- [slim-rails](https://github.com/slim-template/slim-rails)
+- [font-awesome-rails](https://github.com/bokmann/font-awesome-rails)
 
-Uses these gems for easy development:
+Uses these gems for development support:
 
-- rubocop
-- better\_errors
-- binding\_of\_caller
+- [rubocop](https://github.com/bbatsov/rubocop)
+- [better\_errors](https://github.com/charliesome/better_errors)
+- [binding\_of\_caller](https://github.com/banister/binding_of_caller)
 
 ## Setup (with docker)
 
