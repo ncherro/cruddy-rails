@@ -2,22 +2,25 @@ version: '2'
 
 services:
   db:
-    image: postgres
+    image: 'postgres:9.6'
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
 
   app:
     build: .
     command: bundle exec rails s -p 3000 -b '0.0.0.0'
     volumes:
       - .:/myapp
+      - app-gems:/usr/local/bundle
     ports:
       - "3000:3000"
     depends_on:
       - db
-    volumes_from:
-      - bundle
+    environment:
+      - DISABLE_SPRING=1
 
-  # persist gems on the host for faster rebuilding
-  bundle:
-    image: busybox
-    volumes:
-      - /bundle
+# store data on the host to persist between builds
+volumes:
+  postgres-data:
+  app-gems:
+

@@ -22,8 +22,8 @@ Uses these gems for easy development:
 
 - `docker-compose build`
 - `docker-compose run app bundle`
-- `docker-compose run app bundle exec rails db:create`
-- `docker-compose run app bundle exec rails db:reset`
+- `docker-compose run app rails db:create`
+- `docker-compose run app rails db:reset`
 - `docker-compose up`
 
 Then visit http://dockerhost:3000/posts, where `dockerhost` points to your
@@ -33,7 +33,7 @@ Then visit http://dockerhost:3000/posts, where `dockerhost` points to your
 
 These commands were run to scaffold some views (no need to re-run, just FYI)
 
-- `docker-compose run app bundle exec rails g bootstrap:layout`
-- `docker-compose run app bundle exec rails g bootstrap:install static`
-- `docker-compose run app bundle exec rails g simple_form:install --bootstrap`
-- `docker-compose run app bundle exec rails generate kaminari:views bootstrap3`
+- `docker-compose run app rails g bootstrap:layout`
+- `docker-compose run app rails g bootstrap:install static`
+- `docker-compose run app rails g simple_form:install --bootstrap`
+- `docker-compose run app rails generate kaminari:views bootstrap3`
