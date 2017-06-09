@@ -1,3 +1,5 @@
+# usage: bundle exec rake ach:generate_nacha
+
 namespace :ach do
   desc "generates a sample Namely NACHA file that credits fund to a client's employee's account"
   task :generate_nacha => :environment do
