@@ -3,4 +3,8 @@
 
 require_relative 'config/application'
 
+task :console do
+  exec "irb -r ach -I ./lib"
+end
+
 Rails.application.load_tasks
