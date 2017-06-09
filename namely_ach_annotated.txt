@@ -1,0 +1,26 @@
+# file header record
+#  odfi routing, rdfi assigned no, file cdate, file ctime, odfi name, our company name
+101 12114039939482593841706090900A094101CHASE BANK             NAMELY INC                     
+
+# batch header record
+# cred or deb, our company name, rdfi assigned no, entry desc, entry date, eff entry date, odfi routing
+5220COMPANY NAME                        3948259384PPDPAYROLLACH170609170612   1221140390000001
+
+# PPD entry detail record
+# credit, rdfi routing, acct no, cents amt, indiv id no, indiv name,          trace number
+62222114039910987654321      0000020000123456789      EMPLOYEE TO BE PAID     0121140390000001
+
+# batch control record
+# batch hdr serv code, num of entries, debit num cents, credit num cents, batch hdr, match BHR company id, match BHR
+822000000100221140390000000000000000000200003948259384                         221140390000001
+
+# file control record
+# 9, batch count, block count, entry count, entry hash, debit num cents, credit num cents
+9000001000001000000010022114039000000000000000000020000                                       
+
+# records of full 9s are needed to pad the file so that the number of records are a multiple of 10
+9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
+9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
+9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
+9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
+9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999

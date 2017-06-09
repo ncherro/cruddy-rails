@@ -24,8 +24,12 @@ gem 'twitter-bootstrap-rails'
 gem 'slim-rails'
 gem 'font-awesome-rails'
 
+# testing nacha gems
+gem 'ach'
+
 group :development, :test do
   gem 'byebug', platform: :mri
+  gem 'rspec'
 end
 
 group :development do
